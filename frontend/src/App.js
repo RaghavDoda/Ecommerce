@@ -5,6 +5,7 @@ import {BrowserRouter , Routes , Route  } from 'react-router-dom';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import Companies from './pages/filtered';
+import Cart from './pages/Cart';
 
 function App() {
   return (
@@ -23,6 +24,10 @@ function App() {
                         <Route
                             path='/companies'
                             element= {<Companies/>}
+                        />
+                        <Route
+                            path='/cart'
+                            element= {<Cart/>}
                         />
                     </Routes>
                 </div>

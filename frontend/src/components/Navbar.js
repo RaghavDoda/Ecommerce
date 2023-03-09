@@ -19,7 +19,7 @@ const  Navbar = () =>{
                         <div className="navend" style={{fontSize:"115%"}}>
                             <a href="/companies" style={{color: "white"}}>Companies</a>
                             <a href="/services" style={{color: "white"}}>Services</a>
-                            <a href="/" style={{color: "white", fontSize:"120%"}}><AiOutlineShoppingCart/></a>
+                            <a href="/cart" style={{color: "white", fontSize:"120%"}}><AiOutlineShoppingCart/></a>
                         </div>
                     
                 </nav>
