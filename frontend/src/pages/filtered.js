@@ -9,7 +9,7 @@ const Filtered = () => {
     <>
         <Navbar/>
         <div className="row">
-                <div className="col-2" style={{borderRight:"dashed",padding:"0.5%"}}>
+                <div className="col-2 " style={{borderRight:"dashed",padding:"0.5%",top:"50"}}>
                     <Filters/>
                 </div>
                 <div className='col-9 m-2'>
