@@ -1,13 +1,17 @@
 import {CgProfile} from "react-icons/cg";
 import {AiOutlineSearch} from "react-icons/ai"
 import {AiOutlineShoppingCart} from "react-icons/ai"
+import Profile from "./Profile";
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import '../../node_modules/bootstrap/js/dist/offcanvas'
 const  Navbar = () =>{
 
     return(
         <header>
             <div className="container">
             <div className="containertitle">
-            <a href="/" style={{color: "white"}}><span id="profile"><a href="/" className="icon"><CgProfile/></a></span>  SAI Electronics</a>
+                <a href="/" style={{color: "white"}}><span id="profile"><a href="/"  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" className="icon" style={{fontSize:"180%" , color:"#fff"}}><CgProfile/></a></span>  SAI Electronics</a>
+                <Profile/>
             </div>
             <div className="search">
                 <input  className="searchbar" placeholder="Search here...."/>
