@@ -179,3 +179,25 @@ img:hover{
   justify-content: center;
   color: #fff;
 }
+
+
+.serviceHistory {
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+.serviceHistory h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: purple;
+}
+.serviceHistory p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+  word-break: break-all;
+  white-space: normal;
+}
