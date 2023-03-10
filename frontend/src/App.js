@@ -6,6 +6,8 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import Companies from './pages/filtered';
 import Cart from './pages/Cart';
+import Admin from './pages/adminPage';
+
 
 function App() {
   return (
@@ -28,6 +30,10 @@ function App() {
                         <Route
                             path='/cart'
                             element= {<Cart/>}
+                        />
+                        <Route
+                            path='/admin'
+                            element= {<Admin/>}
                         />
                     </Routes>
                 </div>
