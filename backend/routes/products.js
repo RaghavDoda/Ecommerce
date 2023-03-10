@@ -14,7 +14,7 @@ const {
 
 //Get all products
 router.get('/',getProducts)
-
+ 
 //GET a single product 
 router.get('/:id',getProduct)
 

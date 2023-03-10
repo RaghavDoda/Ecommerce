@@ -8,7 +8,7 @@ const getProducts = async (req,res) =>{
     const products = await Products.find()
     res.status(200).json(products)
 }
-
+ 
 // Get a single product
 const getProduct = async (req,res) =>{
     const {id} = req.params
