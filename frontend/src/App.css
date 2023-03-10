@@ -201,3 +201,39 @@ img:hover{
   word-break: break-all;
   white-space: normal;
 }
+.box{
+  padding-top: 7%;
+}
+.filterbox{
+  background: rgb(202, 159, 202);
+  padding: 8%;
+  border-radius: 5%;
+}
+.listitem{
+  box-shadow: 0 5px 25px rgba(0,0,0,.2);
+  background: rgb(226, 192, 226);
+  border-radius: 8%;
+}
+.listitem:hover{
+  background: rgb(178, 123, 178);
+  height: 10%;
+  transform: translate(0px, -1px);
+}
+.card-image{
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  border-width: medium;
+  padding: 7px;
+  margin: 5%;
+  justify-content: center;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+}
+.card-img-div{
+  position: relative;
+  margin-bottom: 4%;
+}
+.card-body{
+  margin: 2% 5%;
+}
