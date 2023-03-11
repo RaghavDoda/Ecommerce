@@ -3,8 +3,24 @@ import Navbar from '../components/Navbar';
 import ProductCard from '../components/ProductCard';
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import { useState,useEffect } from 'react';
 
 const Filtered = () => {
+
+  const [products,setProducts] = useState(null)
+  useEffect(() => {
+    const fetchProducts= async () =>{
+      const response = await fetch ('/products/')
+      const json = await response.json()
+
+      if(response.ok){
+        setProducts(json)
+      }
+    }
+    fetchProducts()
+  }, [])
+
+
   return (
     <>
         <Navbar/>
@@ -13,10 +29,9 @@ const Filtered = () => {
                     <Filters/>
                 </div>
                 <div className='col-9 m-2'>
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
+                  {products && products.map((product)=>(
+                    <ProductCard props={{title:product.title,price:product.price,details:product.details}}/>
+                  ))}
                 </div>
 
             </div>
