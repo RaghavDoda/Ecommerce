@@ -14,52 +14,55 @@ const userSchema = new Schema({
     password:{
         type:String,
         required:true
+    },
+    isAdmin:{
+        type:Boolean,
+        default:false
     }
 })
 
 // static signup method
-userSchema.statics.signup = async function (email,password){
+userSchema.statics.signup = async function (prop){
 
     //validation
-    if(!email || !password){
+    if(!prop.email || !prop.password){
         throw Error('All feilds must be filled')
     }
-    if(!validator.isEmail(email)){
+    if(!validator.isEmail(prop.email)){
         throw Error('Email is not valid')
     }
-    if(!validator.isStrongPassword(password)){
+    if(!validator.isStrongPassword(prop.password)){
         throw Error('Password not strong enough')
     }
 
-    const exists = await this.findOne({email})
+    const exists = await this.findOne({email:prop.email})
     if(exists){
         throw Error('Email already exists')
     }
         const  salt = await bcrypt.genSalt(10)
-        const hash = await bcrypt.hash(password,salt)
-
-        const user = await this.create({email,password:hash})
+        prop.password = await bcrypt.hash(prop.password,salt)
+       
+        const user = await this.create(prop)
         return user
 }   
 
 //static login method
-userSchema.statics.login = async function (email,password) {
+userSchema.statics.login = async function (prop) {
     //validation
-    if(!email || !password){
+    if(!prop.email || !prop.password){
         throw Error('All feilds must be filled')
     }
-
-    const user = await this.findOne({email})
+    const user = await this.findOne({email:prop.email})
     
     if(!user){
         throw Error('Incorrect email')
     }
-
-    const match = await bcrypt.compare(password,user.password)
+    const match = await bcrypt.compare(prop.password,user.password)
 
     if(!match){
         throw Error('Incorrect Password')
     }
+
     return user
 }
 

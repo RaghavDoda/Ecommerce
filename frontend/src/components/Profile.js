@@ -1,4 +1,16 @@
+
+import {useLogout} from '../hooks/useLogout'
+import { useAuthContext } from '../hooks/useAuthContext'
+
 const Profile = () =>{
+    
+    const {logout} = useLogout()
+    const {user} = useAuthContext()
+
+    const clickHandler = () =>{
+        logout()
+    }
+
     return (
         <div className="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
             <div className="offcanvas-header">
@@ -6,15 +18,9 @@ const Profile = () =>{
                 <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" style={{fontSize:"60%"}}></button>
             </div>
             <div className="offcanvas-body" >
-                <span style={{textShadow:"none" ,fontSize:"70%", justifyContent:"center",fontFamily:"monospace"}}><strong>Name:</strong>Raghav doda</span>
+                <span style={{textShadow:"none",fontSize:"70%",justifyContent:"center",fontFamily:"monospace"}}><strong>email:</strong>{user.email}</span>
                 <hr />
-                <span style={{textShadow:"none",fontSize:"70%",justifyContent:"center",fontFamily:"monospace"}}><strong>Phone Number:</strong>+91-7527902363</span>
-                <hr />
-                <span style={{textShadow:"none",fontSize:"70%",justifyContent:"center",fontFamily:"monospace"}}><strong>email:</strong>raghav@gmail.com</span>
-                <hr />
-                <a class="btn btn-dark" href="/" role="button">Login</a>
-                <hr />
-                <a class="btn btn-dark" href="/" role="button">Logout</a>
+                <button class="btn btn-dark" onClick={clickHandler}>Log out</button>
             </div>
         </div>
     )

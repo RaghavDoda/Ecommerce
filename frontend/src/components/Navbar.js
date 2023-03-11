@@ -4,18 +4,9 @@ import {AiOutlineShoppingCart} from "react-icons/ai"
 import Profile from "./Profile";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../../node_modules/bootstrap/js/dist/offcanvas'
-import {Link} from 'react-router-dom'
-import {useLogout} from '../hooks/useLogout'
-import { useAuthContext } from '../hooks/useAuthContext'
+import { Link } from "react-router-dom";
 
 const  Navbar = () =>{
-    const {logout} = useLogout()
-    const {user} = useAuthContext()
-
-    const clickHandler = () =>{
-        logout()
-    }
-
     return(
         <header>
             <div className="container">
@@ -31,22 +22,10 @@ const  Navbar = () =>{
             </div>
                 <nav>
                         <div className="navend" style={{fontSize:"115%"}}>
-                            <a href="/companies" style={{color: "white"}}>Companies</a>
-                            <a href="/services" style={{color: "white"}}>Services</a>
-                            <a href="/cart" style={{color: "white", fontSize:"120%"}}><AiOutlineShoppingCart/></a>
+                            <Link to={'/companies'} style={{color: "white"}}>Companies</Link>
+                            <Link to={'/services'} style={{color: "white"}}>Services</Link>
+                            <Link to={'/cart'} style={{color: "white", fontSize:"120%"}}><AiOutlineShoppingCart/></Link>
                         </div>
-                        {user && (
-                        <div>
-                            <span>{user.email}</span>
-                            <button onClick={clickHandler}>Log out</button>
-                        </div>
-                        )}
-                        {!user && (     
-                            <div>
-                                <Link to="/user/login">Login</Link>
-                                <Link to="/user/signUp">Signup</Link>
-                            </div>
-                        )}
                 </nav>
             </div>
         </header>

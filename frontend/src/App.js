@@ -12,19 +12,23 @@ import Login from './pages/Signin';
 
 function App() {
     const {user} = useAuthContext()
+    // var admin = false
+    // if(user.isAdmin) {
+    //    admin = true
+    // }
 
   return (
     <>
       <BrowserRouter>
                 <div className="pages">
                     <Routes>
-                    <Route
+                        <Route
                             path='/'
-                            element={user ? <Home/> : <Navigate to = '/login'/>}
+                            element={user ? (user.isAdmin ? <Navigate to = '/admin'/> : <Home/>) : <Navigate to = '/login'/>}
                         />
                         <Route
                             path='/login'
-                            element={!user ? <Login/> : <Navigate to = '/'/>}
+                            element={!user ? <Login/> : (user.isAdmin ? <Navigate to = '/admin'/> : <Navigate to = '/'/>)}
                         />
                         <Route
                             path='/signUp'
