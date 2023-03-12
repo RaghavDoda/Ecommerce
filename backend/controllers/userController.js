@@ -5,10 +5,10 @@ const {createToken} = require('../middleware/createToken')
 const loginUser = async (req,res) =>{
     try{
         const user = await User.login(req.body)
-
+ 
         //create a token
         const token = createToken (user._id)
-
+        res.header('token', `${token}`)
         res.status(200).json(user)
     }catch(error){
         res.status(400).json({error: error.message})
@@ -23,6 +23,7 @@ const signupUser = async (req,res) =>{
 
         //create a token
         const token = createToken (user._id)
+        res.header('token', `${token}`)
 
         res.status(200).json(user)
     }catch(error){
