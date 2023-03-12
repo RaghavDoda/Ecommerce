@@ -1,6 +1,7 @@
-import { useAuthContext } from "./useAuthContext"
+import  useAuthContext  from "./useAuthContext"
+import React from "react"
 
-export const useLogout = () =>{
+const useLogout = () =>{
     const {dispatch} = useAuthContext()
 
     const logout = () =>{
@@ -13,3 +14,5 @@ export const useLogout = () =>{
 
     return {logout}
 }
+
+export default useLogout

@@ -1,8 +1,12 @@
 const Cart = require('../model/Cart')
+const jwt = require('jsonwebtoken')
 
 // Get all products 
 const getProducts = async (req,res) =>{
-    const cart = await Cart.findOne({user_id:req.user._id})
+    const { authorization } = req.headers
+    const token = authorization.split(' ')[1]
+    const { _id } = jwt.verify(token, process.env.SECRET)
+    const cart = await Cart.findOne({user_id:_id})
     if(cart)
     {
         res.status(200).json(cart)

@@ -1,12 +1,15 @@
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../../node_modules/bootstrap/'
-import {useLogout} from '../hooks/useLogout'
-import { useAuthContext } from '../hooks/useAuthContext'
+import useLogout from '../hooks/useLogout'
+// import useAuthContext  from '../hooks/useAuthContext'
 
 const AdminNav =()=>{
     
     const {logout} = useLogout()
-    const {user} = useAuthContext()
+    
+    const user = JSON.parse(localStorage.getItem('user'))
+    console.log("Yhan pe")
+    console.log(user)
 
     const clickHandler = () =>{
         logout()

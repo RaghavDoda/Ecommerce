@@ -1,5 +1,5 @@
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
-
+import React from 'react';
 import refrigerator from '../Images/refrigerator.jpg' 
 import micro from '../Images/micro.jpg' 
 import AC from '../Images/AC.jfif'

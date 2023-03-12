@@ -1,11 +1,11 @@
-
-import {useLogout} from '../hooks/useLogout'
+import React from 'react';
+import useLogout from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext'
 
 const Profile = () =>{
     
     const {logout} = useLogout()
-    const {user} = useAuthContext()
+    const user = JSON.parse(localStorage.getItem('user'))
 
     const clickHandler = () =>{
         logout()

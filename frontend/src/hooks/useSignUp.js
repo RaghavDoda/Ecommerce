@@ -1,7 +1,7 @@
 import {useState} from 'react'
-import { useAuthContext} from './useAuthContext'
+import  useAuthContext from './useAuthContext'
 
-export const useSignUp = () =>{
+const useSignUp = () =>{
     const [error,setError] = useState(null)
     const [isLoading,setIsLoading] = useState(null)
     const {dispatch} = useAuthContext()
@@ -16,6 +16,8 @@ export const useSignUp = () =>{
             body:JSON.stringify({email,password})
         })
         const json = await response.json()
+        console.log(response)
+        // json.token = response.headers.token
 
         if(!response.ok){
             setIsLoading(false)
@@ -32,3 +34,5 @@ export const useSignUp = () =>{
     }
     return {signup , isLoading , error}
 }
+
+export default useSignUp

@@ -1,4 +1,5 @@
 import {CgProfile} from "react-icons/cg";
+import React from 'react';
 import {AiOutlineSearch} from "react-icons/ai"
 import {AiOutlineShoppingCart} from "react-icons/ai"
 import Profile from "./Profile";

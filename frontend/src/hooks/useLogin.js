@@ -1,7 +1,8 @@
 import {useState} from 'react'
-import { useAuthContext} from './useAuthContext'
+import  useAuthContext from './useAuthContext'
+import React from 'react'
 
-export const useLogin = () =>{
+const useLogin = () =>{
     const [error,setError] = useState(null)
     const [isLoading,setIsLoading] = useState(null)
     const {dispatch} = useAuthContext()
@@ -16,6 +17,11 @@ export const useLogin = () =>{
             body:JSON.stringify({email,password})
         })
         const json = await response.json()
+        console.log(response)
+        // console.log(response.headers.token)
+        // json.token = response.headers.token
+
+        // json.push({'token':`${response.headers.token}`})
 
         if(!response.ok){
             setIsLoading(false)
@@ -23,6 +29,10 @@ export const useLogin = () =>{
         }
         if(response.ok){
             // save the user to the local storage
+            // const { authorization } = response.headers
+            // const token = response.headers.token
+            // console.log(token)
+            
             localStorage.setItem('user',JSON.stringify(json))
 
             //update the auth context
@@ -32,3 +42,5 @@ export const useLogin = () =>{
     }
     return {login , isLoading , error}
 }
+
+export default useLogin

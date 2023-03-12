@@ -1,5 +1,6 @@
 import { useState } from "react" 
-import { useLogin } from "../hooks/useLogin"
+import  useLogin  from "../hooks/useLogin"
+import { Link } from "react-router-dom"
 
 const Login = ()=>{
     const [email,setEmail] = useState('')
@@ -9,16 +10,17 @@ const Login = ()=>{
     const handleSubmit = async (e) =>{
         e.preventDefault()
         await login(email,password)
+        
     }
 
     return(
-        <form className="login" onSubmit={handleSubmit}>
+        <form className="login" onSubmit={handleSubmit} action={'<?php echo htmlspecialchars($[PHP_SERVER["PHP_self"]);?>'} method={'post'}>
             <h3>Log in</h3>
 
             <label>Email:</label>
             <input 
                 type="email" 
-                onChange={(e)=>setEmail(e.target.value)}
+                onChange={(e)=>setEmail(e.target.value)}    
                 value= {email}
             />
             <label>Password:</label>

@@ -1,30 +1,50 @@
-import Navbar from '../components/Navbar'
-import Order from '../components/Order'
+import Filters from '../components/filters';
+import Navbar from '../components/Navbar';
+import ProductCard from '../components/ProductCard';
+
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import { useState,useEffect } from 'react';
 
 const Cart = () => {
-    return (
-        <>
-            <Navbar/>
-            <div className="cart" style={{margin:"2% 7% 2% 7%"}}>
-                <h1>Shoping Cart</h1>
-                <div style={{display:"flex"}}>
-                    <a href="/cart">Diselect all items</a>
-                    <div style={{justifyContent:"flex-end" , display:"flex", width:"85%"}}>
-                    <span style={{marginLeft:"2%"}}>Price</span>
-                    </div>
+
+  const [products,setProducts] = useState(null)
+  useEffect(() => {
+    const fetchProducts= async () =>{
+      const response = await fetch ('/cart/',
+      {
+                  method:'GET',
+                  headers: {
+                      Authorization: `Bearer ${JSON.parse(localStorage.getItem('user')).token}`
+                    }
+            })
+      const json = await response.json()
+      console.log("ha cart hai")
+      console.log(json)
+
+      if(response.ok){
+        setProducts(json)
+      }
+    }
+    fetchProducts()
+  }, [])
+
+
+  return (
+    <>
+        <Navbar/>
+        <div className="row">
+                <div className="col-2 " style={{borderRight:"ridge",padding:"0.5%",top:"50"}}>
+                    <Filters/>
                 </div>
-                <hr className="solid" />
-                <Order props = {{product:"Refrigeraator", company:"Samsung", description:"Hello", price:"50"}}/>
-                <hr className="solid" />
-                <Order props = {{product:"Refrigeraator", company:"Samsung", description:"Hello", price:"30"}}/>
-                <hr className="solid" />
-                <div >
-                    <span style={{justifyContent:"flex-end", display:"flex", marginRight:"5%", fontSize:"140%"}}>{`Subtotal(2 items): $80`}</span>
+                <div className='col-9 m-2'>
+                  {/* {products && products.map((product)=>( */}
+                    <ProductCard props={{title:products.user_id,price:products.user_id,details:products.user_id}}/>
+                  {/* ))} */}
                 </div>
+
             </div>
-        </>
-    )
+    </>
+  )
 }
 
-export default Cart;
+export default Cart
