@@ -18,7 +18,7 @@ const Cart = () => {
                     }
             })
       const json = await response.json()
-      console.log("ha cart hai")
+      console.log("ah a reha hai")
       console.log(json)
 
       if(response.ok){
@@ -37,9 +37,9 @@ const Cart = () => {
                     <Filters/>
                 </div>
                 <div className='col-9 m-2'>
-                  {/* {products && products.map((product)=>( */}
-                    <ProductCard props={{title:products.user_id,price:products.user_id,details:products.user_id}}/>
-                  {/* ))} */}
+                  {products && products.map((product)=>(
+                   <ProductCard props={{title:product.title,price:product.price,details:product.details}}/> 
+                    ))}  
                 </div>
 
             </div>
