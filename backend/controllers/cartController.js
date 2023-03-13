@@ -8,24 +8,43 @@ const getProducts = async (req,res) =>{
     const token = authorization.split(' ')[1]
     const { _id } = jwt.verify(token, process.env.SECRET)
     const cart = await Cart.findOne({user_id:_id})
+    // const cart = true
     if(cart)
     {
         var ans = []
-        console.log(cart.orderlist.length)
         var i=0;
-        const product = await Product.findOne({_id:cart.orderlist[0].product_id})
-        console.log(product);
         while( i<cart.orderlist.length)
         {
-            const product = await Product.findOne({_id:cart.orderlist[0].product_id})
+            const product = await Product.findOne({_id:cart.orderlist[i].product_id})
             ans.push(product);
             i++;
         }
-        res.status(200).json(ans)
+        console.log(ans)
+        const l = ans.length;
+        const temp = {}
+
+        for(let i = 0 ; i< l ; i++){
+            for(let j = i+1 ; j < l  ; j++){
+                if(ans[i].title === ans[j].title && i!==j && ans[i]!=temp){
+                    ans[i].quantity++;
+                    ans[j]=temp;
+                }
+            }
+        }
+        
+        var result = []
+        for(let i=0; i<l; i++)
+        {
+            if(ans[i]!==temp)
+            {
+                result.push(ans[i])
+            }
+        }
+        res.status(200).json(result)
     }
     else 
     {
-        res.status(200).json({mssg:"No orders"})
+        res.status(200).json([])
     }
 }
 

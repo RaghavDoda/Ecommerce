@@ -12,7 +12,7 @@ const  ProductCard = ({props}) =>{
                     <div class="col-md-8" >
                     <div class="card-body">
                         <h5 class="card-title">{props.title}</h5>
-                        <p class="card-text"><strong>Memory and storage:</strong> {props.details}<br></br>Processor: Intel Core i5-1155G7<br/>Operating System: Pre-loaded Windows 11<br/>Display: 15.6 Inches screen with 1920 x 1080 Pixels resolution<br/>Weight: 1.69 Kg<br/>Warranty: 1 Year from the manufacturer from the date of purchase</p>
+                        <p class="card-text"><strong>Memory and storage:</strong> {props.details}<br></br>Quantity: {props.quantity}<br/>Operating System: Pre-loaded Windows 11<br/>Display: 15.6 Inches screen with 1920 x 1080 Pixels resolution<br/>Weight: 1.69 Kg<br/>Warranty: 1 Year from the manufacturer from the date of purchase</p>
                         <p class="card-text"><small class="text-muted">{props.price}</small></p>
                         <button type="button" class="btn btn-primary m-2 listitem" style={{backgroundColor:"rgb(226, 192, 226)",border:"none",color:"black"}}>Add To Cart</button>
                         <button type="button" class="btn btn-primary m-2 listitem" style={{backgroundColor:"rgb(226, 192, 226)",border:"none",color:"black"}}>View Details</button>

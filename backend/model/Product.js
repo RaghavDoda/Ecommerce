@@ -21,6 +21,10 @@ const productSchema = new Schema({
     },
     company_id:{
         type:String
+    },
+    quantity:{
+        type:String,
+        default:1
     }
 })
 

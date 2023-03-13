@@ -9,7 +9,7 @@ const {
 const {requireAuth} = require('../middleware/requireAuth')
 
 //get all product
-router.get('/', getProducts)
+router.get('/', requireAuth,getProducts)
 
 //add a new product
 router.post('/:id', requireAuth,addProduct)

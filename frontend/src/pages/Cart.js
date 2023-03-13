@@ -7,7 +7,7 @@ import { useState,useEffect } from 'react';
 
 const Cart = () => {
 
-  const [products,setProducts] = useState(null)
+  const [products,setProducts] = useState([])
   useEffect(() => {
     const fetchProducts= async () =>{
       const response = await fetch ('/cart/',
@@ -27,8 +27,6 @@ const Cart = () => {
     }
     fetchProducts()
   }, [])
-
-
   return (
     <>
         <Navbar/>
@@ -37,11 +35,11 @@ const Cart = () => {
                     <Filters/>
                 </div>
                 <div className='col-9 m-2'>
+                  {products.length===0 && <h1>No orders</h1>}
                   {products && products.map((product)=>(
-                   <ProductCard props={{title:product.title,price:product.price,details:product.details}}/> 
-                    ))}  
+                   <ProductCard props={{title:product.title,price:product.price,details:product.details,quantity:product.quantity}}/> 
+                  ))}   
                 </div>
-
             </div>
     </>
   )
