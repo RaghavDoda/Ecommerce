@@ -11,6 +11,7 @@ import Cart from './pages/Cart';
 import Admin from './pages/adminPage';
 import SignUp from './pages/Signup';
 import Login from './pages/Signin';
+import Buynow from './components/Buynow';
 
 function App() {
     const {user} = useAuthContext()
@@ -48,6 +49,10 @@ function App() {
                 <Route
                     path='/cart'
                     element= {user!=null  ? (user.isAdmin ? <Navigate to = '/admin'/> : <Cart/>) : <Navigate to = '/login'/>}
+                />
+                <Route
+                    path='/buynow'
+                    element= {user!=null  ? (user.isAdmin ? <Navigate to = '/admin'/> : <Buynow/>) : <Navigate to = '/login'/>}
                 />
                 <Route
                     path='/admin'

@@ -30,7 +30,7 @@ const Filtered = () => {
                 </div>
                 <div className='col-9 m-2'>
                   {products && products.map((product)=>(
-                    <ProductCard props={{title:product.title,price:product.price,details:product.details}}/>
+                    <ProductCard props={{title:product.title,price:product.price,details:product.details,quantity:product.quantity,id:product._id}}/>
                   ))}
                 </div>
 

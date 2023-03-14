@@ -25,24 +25,25 @@ const getProduct = async (req,res) =>{
 
 // Create new product
 const createProduct = async (req,res) => {
-    const {title,price,details} =req.body
+    // const {title,price,details} =req.body
 
-    let emptyFields = []
-    if(!title){
-        emptyFields.push('title')
-    }
-    if(!price){
-        emptyFields.push('price')
-    }
-    if(!details){
-        emptyFields.push('details')
-    }
-    if(emptyFields.length > 0){
+    // let emptyFields = []
+    // if(!title){
+    //     emptyFields.push('title')
+    // }
+    // if(!price){
+    //     emptyFields.push('price')
+    // }
+    // if(!details){
+    //     emptyFields.push('details')
+    // }
+    
+    if(req.body.length > 0){
         return res.status(400).json({error: ' Please Fill in all the Fields',emptyFields})
     }
     // add doc to db
     try{
-        const products = await Products.create({title,price,details})
+        const products = await Products.create(req.body)
         res.status(200).json(products)
     }catch(err){
         res.status(400).json({error:err.message})

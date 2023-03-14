@@ -19,27 +19,33 @@ const getProducts = async (req,res) =>{
             ans.push(product);
             i++;
         }
-        console.log(ans)
-        const l = ans.length;
-        const temp = {}
-
-        for(let i = 0 ; i< l ; i++){
-            for(let j = i+1 ; j < l  ; j++){
-                if(ans[i].title === ans[j].title && i!==j && ans[i]!=temp){
-                    ans[i].quantity++;
-                    ans[j]=temp;
+        
+        const set = async (ans) =>{
+            const l = ans.length;
+            const temp = {}
+            for(let i = 0 ; i< l ; i++){
+                for(let j = i+1 ; j < l  ; j++){
+                    if(ans[i].key === ans[j].key && i!==j && ans[i]!=temp){
+                        ans[i].quantity++;
+                        ans[j]=temp;
+                    }
                 }
             }
-        }
-        
-        var result = []
-        for(let i=0; i<l; i++)
-        {
-            if(ans[i]!==temp)
+            // console.log(ans)
+            
+            var result = []
+            for(let i=0; i<l; i++)
             {
-                result.push(ans[i])
+                if(ans[i]!==temp)
+                {
+                    result.push(ans[i])
+                }
             }
+            // console.log(result)
+
+            return (result)
         }
+        const result = await set(ans)
         res.status(200).json(result)
     }
     else 

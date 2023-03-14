@@ -25,6 +25,11 @@ const productSchema = new Schema({
     quantity:{
         type:String,
         default:1
+    },
+    key : {
+        type : Number ,
+        required : true,
+        default:0
     }
 })
 
