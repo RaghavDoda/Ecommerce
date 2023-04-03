@@ -19,8 +19,9 @@ const productSchema = new Schema({
         type : String,
         required:true
     },
-    company_id:{
-        type:String
+    company:{
+        type:String,
+        required:true
     },
     quantity:{
         type:String,

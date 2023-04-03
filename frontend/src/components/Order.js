@@ -14,7 +14,7 @@ const Order = ({props}) =>{
                 Authorization: `Bearer ${JSON.parse(localStorage.getItem('user')).token}`
             }
         })
-        // const json = await response.json()
+        document.location.reload(true);
     }
 
     const handleSubmit2 = ()=>{
@@ -27,7 +27,8 @@ const Order = ({props}) =>{
                 Authorization: `Bearer ${JSON.parse(localStorage.getItem('user')).token}`
             }
         })
-        // const json = await response.json()
+        document.location.reload(true);
+
     }
 
     return (

@@ -1,25 +1,32 @@
+// components
 import Filters from '../components/filters';
 import Navbar from '../components/Navbar';
 import ProductCard from '../components/ProductCard';
 
+//Bootstrap
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import { useState,useEffect } from 'react';
+
+//Context
+import {useProductContext} from '../context/appContext'
 
 const Filtered = () => {
-
-  const [products,setProducts] = useState(null)
-  useEffect(() => {
-    const fetchProducts= async () =>{
-      const response = await fetch ('/products/')
-      const json = await response.json()
-
-      if(response.ok){
-        setProducts(json)
-      }
-    }
-    fetchProducts()
-  }, [])
-
+  const {products,isLoading} = useProductContext()
+ 
+  if(isLoading) {
+    return (
+      <>
+          <Navbar/>
+          <div className="row">
+                  <div className="col-2 " style={{borderRight:"ridge",padding:"0.5%",top:"50"}}>
+                      <Filters/>
+                  </div>
+                  <div className='col-9 m-2'>
+                    <h1>Loading...</h1>
+                  </div>
+              </div>
+      </>
+    )
+  }
 
   return (
     <>
@@ -33,7 +40,6 @@ const Filtered = () => {
                     <ProductCard props={{title:product.title,price:product.price,details:product.details,quantity:product.quantity,id:product._id}}/>
                   ))}
                 </div>
-
             </div>
     </>
   )

@@ -4,8 +4,6 @@ import {AiOutlineSearch} from "react-icons/ai"
 import {AiOutlineShoppingCart} from "react-icons/ai"
 import Profile from "./Profile";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import '../../node_modules/bootstrap/js/dist/offcanvas'
-import { Link } from "react-router-dom";
 
 const  Navbar = () =>{
     return(
@@ -23,9 +21,9 @@ const  Navbar = () =>{
             </div>
                 <nav>
                         <div className="navend" style={{fontSize:"115%"}}>
-                            <Link to={'/companies'} style={{color: "white"}}>Companies</Link>
-                            <Link to={'/services'} style={{color: "white"}}>Services</Link>
-                            <Link to={'/cart'} style={{color: "white", fontSize:"120%"}}><AiOutlineShoppingCart/></Link>
+                            <a href='/companies' style={{color: "white"}}>Companies</a>
+                            <a href='/services' style={{color: "white"}}>Services</a>
+                            <a href='/cart' style={{color: "white", fontSize:"120%"}}><AiOutlineShoppingCart/></a>
                         </div>
                 </nav>
             </div>

@@ -2,7 +2,6 @@ import './App.css';
 import React from 'react';
 import {BrowserRouter , Routes , Route ,Navigate } from 'react-router-dom';
 
-import useAuthContext  from './hooks/useAuthContext';
 // pages
 import Home from './pages/Home';
 import Services from './pages/Services';
@@ -14,13 +13,7 @@ import Login from './pages/Signin';
 import Buynow from './components/Buynow';
 
 function App() {
-    const {user} = useAuthContext()
-    // const user2 = JSON.parse(localStorage.getItem('user'))
-    console.log("ethe")
-    console.log(user)
-    
-    // console.log(JSON.stringify(user))
-    // console.log(user2)
+    const user = JSON.parse(localStorage.getItem('user'))
 
     return (
     <>
@@ -28,35 +21,35 @@ function App() {
             <Routes>
                 <Route
                     path='/'
-                    element={user!=null ? (user.isAdmin ? <Navigate to = '/admin'/> : <Home/>) : <Navigate to = '/login'/>}
+                    element={user ? (user.isAdmin ? <Navigate to = '/admin'/> : <Home/>) : <Navigate to = '/login'/>}
                 />
                 <Route
                     path='/login'
-                    element={user==null  ? <Login/> : (user.isAdmin ? <Navigate to = '/admin'/> : <Navigate to = '/'/>)}
+                    element={!user  ? <Login/> : (user.isAdmin ? <Navigate to = '/admin'/> : <Navigate to = '/'/>)}
                 />
                 <Route
                     path='/signUp'
-                    element={user==null  ? <SignUp/>: <Navigate to = '/'/>}
+                    element={!user  ? <SignUp/>: <Navigate to = '/'/>}
                 />
                 <Route
                     path='/companies'
-                    element= {user!=null  ? (user.isAdmin ? <Navigate to = '/admin'/> : <Companies/>) : <Navigate to = '/login'/>}
+                    element= {user  ? (user.isAdmin ? <Navigate to = '/admin'/> : <Companies/>) : <Navigate to = '/login'/>}
                 />
                 <Route
                     path='/services'
-                    element= {user!=null  ? (user.isAdmin ? <Navigate to = '/admin'/> : <Services/>) : <Navigate to = '/login'/>}
+                    element= {user  ? (user.isAdmin ? <Navigate to = '/admin'/> : <Services/>) : <Navigate to = '/login'/>}
                 />
                 <Route
                     path='/cart'
-                    element= {user!=null  ? (user.isAdmin ? <Navigate to = '/admin'/> : <Cart/>) : <Navigate to = '/login'/>}
+                    element= {user  ? (user.isAdmin ? <Navigate to = '/admin'/> : <Cart/>) : <Navigate to = '/login'/>}
                 />
                 <Route
                     path='/buynow'
-                    element= {user!=null  ? (user.isAdmin ? <Navigate to = '/admin'/> : <Buynow/>) : <Navigate to = '/login'/>}
+                    element= {user  ? (user.isAdmin ? <Navigate to = '/admin'/> : <Buynow/>) : <Navigate to = '/login'/>}
                 />
                 <Route
                     path='/admin'
-                    element= {user!=null  ? (user.isAdmin ? <Admin/> : <Navigate to = '/'/>) : <Navigate to = '/login'/>}
+                    element= {user  ? (user.isAdmin ? <Admin/> : <Navigate to = '/'/>) : <Navigate to = '/login'/>}
                 />
             </Routes>
         </BrowserRouter>
